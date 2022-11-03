@@ -242,3 +242,6 @@ rm(all_texts_list)
 rm(full_texts)
 
 rm(t_url, corpus_url, title_urls_full, volume_urls)
+
+
+# adding texts from removed links
