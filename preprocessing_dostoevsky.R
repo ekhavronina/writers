@@ -72,17 +72,3 @@ View(head(dostoevsky_words))
 dos_freq <- dostoevsky_words %>% group_by(word) %>% count() %>% arrange(desc(n))
 
 
-### calculating TF-IDF DFM (document-feature matrix)
-
-dostoevsky_words <- dostoevsky_words %>% 
-  mutate(id = row_number())
-dos_dtm <- dostoevsky_words %>%
-  count(id, word) %>%
-  bind_tf_idf(word, id, n) %>% 
-  cast_dfm(id, word, tf_idf)
-dos_dtm
-
-dos_clean <- dos_dtm %>%
-  dfm_wordstem(language = "ru") %>% 
-  dfm_trim(min_docfreq=0.10)     # ?
-dos_clean
